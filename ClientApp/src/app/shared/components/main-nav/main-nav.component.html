@@ -1,0 +1,15 @@
+<nav class="shadow-lg main-nav">
+	<h1 class="h1">Communicator</h1>
+
+	<div class="main-nav__controls">
+		<ng-container *ngIf="isLoggedIn() | async">
+			{{ (getUser() | async)?.userName }}
+			<a class="btn btn-outline-primary m-1" [routerLink]="['rooms', 'browse']">Browse</a>
+			<button class="btn btn-primary" (click)="logOut()">Log out</button>
+		</ng-container>
+
+		<a [routerLink]="['auth', 'login']" class="btn btn-primary" *ngIf="!(isLoggedIn() | async)">
+			Log in
+		</a>
+	</div>
+</nav>

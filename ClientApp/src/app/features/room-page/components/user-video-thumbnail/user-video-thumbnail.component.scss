@@ -1,0 +1,14 @@
+.user-video-thumbnail {
+	width: 250px;
+	height: auto;
+	position: relative;
+
+	&__controls {
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		justify-content: space-around;
+	}
+}

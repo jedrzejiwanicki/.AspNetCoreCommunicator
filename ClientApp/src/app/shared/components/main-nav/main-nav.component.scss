@@ -1,0 +1,17 @@
+@import "src/assets/styles/colors";
+
+.main-nav {
+	width: 100vw;
+	height: 60px;
+	background-color: $background;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&__controls {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

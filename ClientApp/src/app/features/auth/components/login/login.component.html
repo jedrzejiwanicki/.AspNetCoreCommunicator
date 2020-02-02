@@ -1,0 +1,27 @@
+<section class="container login-page">
+	<main class="login-page__main">
+		<h3 class="h1 font-weight-bold login-page__title">Sign in.</h3>
+
+		<form [formGroup]="form" class="login-page__form shadow-lg" (ngSubmit)="onSubmit()">
+			<div class="form-group">
+				<input
+					type="text"
+					formControlName="login"
+					class="form-control"
+					placeholder="Username"
+				/>
+			</div>
+
+			<input
+				type="password"
+				formControlName="password"
+				class="form-control"
+				placeholder="Password"
+			/>
+
+			<button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="form.invalid">
+				Submit
+			</button>
+		</form>
+	</main>
+</section>

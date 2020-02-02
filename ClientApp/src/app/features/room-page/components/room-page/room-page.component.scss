@@ -1,0 +1,49 @@
+@import "src/styles";
+.room-page {
+	width: 100vw;
+	height: calc(100vh - 60px);
+	position: relative;
+
+	&__user-stream {
+		position: absolute;
+		top: 25px;
+		left: 25px;
+		width: 250px;
+	}
+
+	&__stream-thumbnail {
+		border-radius: 3px;
+		object-fit: fill;
+	}
+
+	&__participant-stream {
+		width: 100%;
+		height: auto;
+		margin: 15px 0;
+		border-radius: 3px;
+	}
+
+	&__main-stream {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: calc(100vh - 60px);
+		object-fit: cover;
+		max-height: calc(100vh - 120px);
+	}
+
+	&__participants {
+		background-color: $background;
+		padding: 20px;
+		position: absolute;
+		top: 60px;
+		right: 20px;
+		height: 80vh;
+		width: 20vh;
+		display: flex;
+		flex-direction: column;
+		z-index: 5;
+		align-items: center;
+	}
+}

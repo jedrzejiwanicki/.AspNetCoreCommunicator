@@ -1,0 +1,11 @@
+<div class="video-thumbnail">
+	<video
+		(loadeddata)="onLoadedData()"
+		autoplay
+		[ngStyle]="{ height: isLoading ? '0' : 'auto' }"
+		[srcObject]="stream"
+		class="video-thumbnail__video"
+	>xxx</video>
+
+	<figure class="loader" *ngIf="isLoading"></figure>
+</div>

@@ -1,0 +1,8 @@
+<div class="user-video-thumbnail">
+	<cm-video-thumbnail [stream]="userStreamService.getUserStream() | async"></cm-video-thumbnail>
+
+	<div class="user-video-thumbnail__controls">
+		<button class="btn btn-primary" (click)="disableAudioStream()">Mute</button>
+		<button class="btn btn-primary" (click)="disableVideoStream()">Video off</button>
+	</div>
+</div>

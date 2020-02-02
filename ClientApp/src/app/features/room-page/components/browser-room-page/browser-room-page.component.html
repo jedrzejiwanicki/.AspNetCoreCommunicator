@@ -1,0 +1,20 @@
+<section class="container browse-room-page">
+	<main class="browse-room-page__main">
+		<h3 class="h1 font-weight-bold browse-room-page__title">Welcome to Communicator.</h3>
+
+		<form [formGroup]="form" class="browse-room-page__form shadow-lg" (ngSubmit)="onSubmit()">
+			<div class="form-group">
+				<select class="form-control browse-room-page__select" formControlName="room">
+					<option value="">Select room</option>
+					<option *ngFor="let room of rooms | async" [value]="room.name">{{
+						room.name
+					}}</option>
+				</select>
+			</div>
+
+			<button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">
+				Submit
+			</button>
+		</form>
+	</main>
+</section>
