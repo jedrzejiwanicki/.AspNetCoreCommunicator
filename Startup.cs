@@ -1,4 +1,4 @@
-
+using System;
 using Communicator.Configurations;
 using Communicator.Db;
 using Communicator.Db.Entities;
@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,7 +28,7 @@ namespace Communicator
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(o => o.AddPolicy("AllowAll", builder =>
@@ -36,7 +37,7 @@ namespace Communicator
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
-            
+
             // Setups fluent validation, validators;
 
             services.SetupFluentValidation();
@@ -52,7 +53,9 @@ namespace Communicator
 
             services.AddSignalR();
             services.AddDbContext<CommunicatorContext>();
-            services.AddIdentity<User, IdentityRole>(o => { o.Password.RequireDigit = false;
+            services.AddIdentity<User, IdentityRole>(o =>
+                {
+                    o.Password.RequireDigit = false;
                     o.Password = new PasswordOptions()
                     {
                         RequireDigit = false,
@@ -77,6 +80,7 @@ namespace Communicator
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -93,17 +97,15 @@ namespace Communicator
             {
                 var dbContext = serviceScope.ServiceProvider.GetService<CommunicatorContext>();
 
-                if (env.IsDevelopment())
+                if (dbContext.Database.GetPendingMigrations().Any())
                 {
                     dbContext.Database.Migrate();
                     dbContext.Database.EnsureCreated();
                 }
-
             }
 
 
             app.UseCors("AllowAll");
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseValidationErrorMiddleware();
@@ -115,7 +117,7 @@ namespace Communicator
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<SignalingHub>("api/signaling");
