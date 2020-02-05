@@ -103,8 +103,7 @@ namespace Communicator
                     dbContext.Database.EnsureCreated();
                 }
             }
-
-
+            
             app.UseCors("AllowAll");
             app.UseStaticFiles();
 
