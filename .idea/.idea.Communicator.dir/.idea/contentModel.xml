@@ -94,6 +94,7 @@
       <e p="ClientApp/node_modules/zone.js" t="IncludeRecursive" />
       <e p="Communicator.csproj" t="IncludeRecursive" />
       <e p="Configurations" t="Include">
+        <e p="AppConfigurations.cs" t="Include" />
         <e p="AuthenticationConfiguration.cs" t="Include" />
         <e p="MediatorConfigurator.cs" t="Include" />
         <e p="ValidationConfigurator.cs" t="Include" />

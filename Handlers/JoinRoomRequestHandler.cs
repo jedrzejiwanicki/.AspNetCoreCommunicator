@@ -23,7 +23,7 @@ namespace Communicator.Handlers
             var room = await _roomService.GetByName(request.RoomName);
             
 
-            _roomService.AddUserToRoom(user, room);
+            await _roomService.AddUserToRoom(user, room);
 
             return await _roomService.GetById(room.Id);
 

@@ -20,8 +20,11 @@ namespace Communicator
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _env;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
+            _env = env;
             Configuration = configuration;
         }
 
@@ -68,11 +71,15 @@ namespace Communicator
                 }).AddEntityFrameworkStores<CommunicatorContext>()
                 .AddDefaultTokenProviders();
 
-            services.ConfigureAuthentication(Configuration);
+            
 
             services.AddScoped<UserService>();
             services.AddScoped<RoomService>();
             services.AddScoped<EnsureUserExistsMiddleware>();
+            
+            services.AddSingleton<AppConfigurations>();
+            
+            services.ConfigureAuthentication(new AppConfigurations(Configuration, _env));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
         }

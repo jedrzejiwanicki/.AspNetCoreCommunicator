@@ -7,7 +7,7 @@ import { filter, first } from 'rxjs/operators';
 import { SignalingEvent } from '../../enums/signaling-event';
 import { Store } from '@ngrx/store';
 import { AppState } from '@store/reducers';
-import { selectAuthToken, selectAuthTokenAsPromise } from '@store/selectors/auth.selectors';
+import { selectAuthTokenAsPromise } from '@store/selectors/auth.selectors';
 
 @Injectable({
 	providedIn: 'root',
@@ -22,11 +22,6 @@ export class SignalRManager {
 
 	public init(): void {
 		this.createConnection();
-
-		selectAuthToken(this.store)
-			.pipe(first())
-			.toPromise()
-			.then((token) => console.log(token));
 	}
 
 	public onConnectionStarted(): Observable<SignalR.HubConnection> {

@@ -8,7 +8,8 @@ namespace Communicator.Configurations
 {
     public static class AuthenticationConfiguration
     {
-        public static void ConfigureAuthentication(this IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureAuthentication(this IServiceCollection services,
+            AppConfigurations appConfigurations)
         {
             services.AddAuthentication(o =>
             {
@@ -23,13 +24,12 @@ namespace Communicator.Configurations
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidIssuer = configuration.GetValue<string>("Authentication:ValidIssuer"),
-                    ValidAudience = configuration.GetValue<string>("Authentication:ValidAudience"),
+                    ValidIssuer = appConfigurations.Get("Authentication:ValidIssuer"),
+                    ValidAudience = appConfigurations.Get("Authentication:ValidAudience"),
                     IssuerSigningKey =
                         new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(configuration.GetValue<string>("Authentication:Secret")))
-                }
-                ;
+                            Encoding.UTF8.GetBytes(appConfigurations.Get("Authentication:Secret")))
+                };
             });
         }
     }
