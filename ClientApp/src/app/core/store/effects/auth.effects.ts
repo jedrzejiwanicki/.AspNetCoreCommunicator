@@ -9,7 +9,9 @@ import {
 	LoginAction,
 	LoginFailureAction,
 	LoginSuccessAction,
-	LogoutSuccessAction,
+	LogoutSuccessAction, SignUpAction,
+	SignUpFailureAction,
+	SignUpSuccessAction,
 } from '../actions/auth';
 import { AuthService } from '../../services/auth.service';
 import { MeRequestAction } from '@store/actions/me';
@@ -48,5 +50,17 @@ export class AuthEffects {
 	$loginSuccess = this.actions$.pipe(
 		ofType(AuthActionType.LoginSuccess),
 		map(() => new MeRequestAction())
+	);
+
+	@Effect()
+	$signup = this.actions$.pipe(
+		ofType(AuthActionType.SignUp),
+		switchMap((action: SignUpAction) =>
+			this.authService.signup(action.payload).pipe(
+				tap(() => this.router.navigateByUrl('/auth/login')),
+				map(() => new SignUpSuccessAction()),
+				catchError(() => of(new SignUpFailureAction()))
+			)
+		)
 	);
 }

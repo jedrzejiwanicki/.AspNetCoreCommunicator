@@ -1,6 +1,10 @@
 import { Action } from '@ngrx/store';
 
-import { LoginRequestPayload, LoginRequestResponse } from '../../services/auth.service';
+import {
+	LoginRequestPayload,
+	LoginRequestResponse,
+	SignUpRequestPayload,
+} from '../../services/auth.service';
 
 export enum AuthActionType {
 	Login = '[Auth] Login',
@@ -9,6 +13,9 @@ export enum AuthActionType {
 	LoginEnd = '[Auth] Login End',
 	Logout = '[Auth] Logout',
 	LogoutSuccess = '[Auth] Logout Success',
+	SignUp = '[Auth] Sign Up Request',
+	SignUpSuccess = '[Auth] Sign Up Success',
+	SignUpFailure = '[Auth] Sign Up Failure',
 }
 
 export class LoginAction implements Action {
@@ -42,4 +49,27 @@ export class LoginEndAction implements Action {
 	readonly type: AuthActionType = AuthActionType.LoginEnd;
 	readonly payload = {};
 }
-export type AuthAction = LoginAction | LoginSuccessAction | LoginFailureAction | LoginEndAction | LogoutAction | LogoutSuccessAction;
+
+export class SignUpAction implements Action {
+	readonly type: AuthActionType = AuthActionType.SignUp;
+	constructor(public payload: SignUpRequestPayload) {}
+}
+export class SignUpSuccessAction implements Action {
+	readonly type: AuthActionType = AuthActionType.SignUpSuccess;
+	readonly payload = {};
+}
+export class SignUpFailureAction implements Action {
+	readonly type: AuthActionType = AuthActionType.SignUpFailure;
+	readonly payload = {};
+}
+
+export type AuthAction =
+	| LoginAction
+	| LoginSuccessAction
+	| LoginFailureAction
+	| LoginEndAction
+	| LogoutAction
+	| LogoutSuccessAction
+	| SignUpAction
+	| SignUpSuccessAction
+	| SignUpFailureAction;

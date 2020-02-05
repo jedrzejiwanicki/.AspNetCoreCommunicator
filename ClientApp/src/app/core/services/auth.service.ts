@@ -11,6 +11,11 @@ export interface LoginRequestPayload {
 	connectionId: string;
 }
 
+export interface SignUpRequestPayload {
+	name: string;
+	password: string;
+}
+
 export interface LoginRequestResponse {
 	token: string;
 	user: User;
@@ -26,5 +31,9 @@ export class AuthService {
 
 	login(payload: LoginRequestPayload): Observable<LoginRequestResponse> {
 		return this.httpClient.post<LoginRequestResponse>(`${this.BASE_URL}/login`, payload);
+	}
+
+	signup(payload: SignUpRequestPayload): Observable<User> {
+		return this.httpClient.post<User>(`${environment.API_URL}/users`, payload);
 	}
 }
