@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as SignalR from '@aspnet/signalr';
 import { HttpTransportType } from '@aspnet/signalr';
-import { environment } from '../../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, first } from 'rxjs/operators';
-import { SignalingEvent } from '../../enums/signaling-event';
 import { Store } from '@ngrx/store';
+
 import { AppState } from '@store/reducers';
+import { environment } from '../../../environments/environment';
+import { SignalingEvent } from '../../enums/signaling-event';
 import { selectAuthTokenAsPromise } from '@store/selectors/auth.selectors';
 
 @Injectable({
@@ -22,6 +23,10 @@ export class SignalRManager {
 
 	public init(): void {
 		this.createConnection();
+	}
+
+	public stop(): Promise<void> {
+		return this.connection.stop();
 	}
 
 	public onConnectionStarted(): Observable<SignalR.HubConnection> {

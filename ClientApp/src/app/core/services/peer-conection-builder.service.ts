@@ -12,10 +12,11 @@ export class PeerConectionBuilderService {
 	constructor(private signalingService: SignalingService) {}
 
 	public createConnectionSender(me: User, user: User, stream: MediaStream) {
-		return new PeerConnectionSender(me, user, stream, this.signalingService);
+		return new PeerConnectionSender(me, user, stream, this.signalingService).createOffer();
 	}
 
 	public createConnectionReceiver(offer: SignalingOfferPayload, stream: MediaStream) {
-		return new PeerConnectionReceiver(offer, stream, this.signalingService);
+		return new PeerConnectionReceiver(offer.receiver, offer.sender, stream, this.signalingService).onOffer(offer);
 	}
+
 }

@@ -12,12 +12,12 @@ namespace Communicator.Validation
             RuleFor(x => x.Password)
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty()
-                .WithMessage("Password required.");
+                .WithMessage("You must provide password.");
 
             RuleFor(x => x.UserName)
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty()
-                .WithMessage("Username is required.");
+                .WithMessage("You must provide username.");
 
 
             RuleFor(x => x)

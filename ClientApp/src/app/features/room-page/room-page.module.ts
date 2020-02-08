@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RoomLeaveGuard } from '@features/room-page/guards/room-leave.guard';
 import { VideoThumbnailComponent } from './components/video-thumbnail/video-thumbnail.component';
 import { UserVideoThumbnailComponent } from './components/user-video-thumbnail/user-video-thumbnail.component';
+import { RoomParticipantComponent } from './components/room-participant/room-participant.component';
 
 @NgModule({
 	declarations: [
@@ -22,6 +23,7 @@ import { UserVideoThumbnailComponent } from './components/user-video-thumbnail/u
 		HomeComponent,
 		VideoThumbnailComponent,
 		UserVideoThumbnailComponent,
+		RoomParticipantComponent,
 	],
 	providers: [ExistingRoomGuard, RoomLeaveGuard],
 	imports: [ReactiveFormsModule, CommonModule, RouterModule.forChild(routes)],

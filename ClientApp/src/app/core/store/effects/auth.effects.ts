@@ -9,7 +9,8 @@ import {
 	LoginAction,
 	LoginFailureAction,
 	LoginSuccessAction,
-	LogoutSuccessAction, SignUpAction,
+	LogoutSuccessAction,
+	SignUpAction,
 	SignUpFailureAction,
 	SignUpSuccessAction,
 } from '../actions/auth';

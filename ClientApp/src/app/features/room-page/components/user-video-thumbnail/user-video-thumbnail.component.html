@@ -2,7 +2,38 @@
 	<cm-video-thumbnail [stream]="userStreamService.getUserStream() | async"></cm-video-thumbnail>
 
 	<div class="user-video-thumbnail__controls">
-		<button class="btn btn-primary" (click)="disableAudioStream()">Mute</button>
-		<button class="btn btn-primary" (click)="disableVideoStream()">Video off</button>
+		<button
+			class="cm-button cm-button--icon cm-button--primary"
+			(click)="toggleScreenSharing()"
+		>
+			<i
+				class="fas fa-stop"
+				*ngIf="userStreamService.isScreenSharingModeEnabled; else disableSharing"
+			></i>
+			<ng-template #disableSharing>
+				<i class="fas fa-desktop"></i>
+			</ng-template>
+		</button>
+		<button class="cm-button cm-button--icon cm-button--primary ml-2" (click)="toggleAudioStream()">
+			<i
+				class="fas fa-microphone-slash"
+				*ngIf="userStreamService.isAudioStreamDisabled; else enableAudio"
+			></i>
+			<ng-template #enableAudio>
+				<i class="fas fa-microphone"></i>
+			</ng-template>
+		</button>
+		<button
+			class="cm-button cm-button--icon cm-button--primary ml-2"
+			(click)="toggleVideoStream()"
+		>
+			<i
+				class="fas fa-video-slash"
+				*ngIf="userStreamService.isVideoStreamDisabled; else enableVideo"
+			></i>
+			<ng-template #enableVideo>
+				<i class="fas fa-video"></i>
+			</ng-template>
+		</button>
 	</div>
 </div>

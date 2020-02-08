@@ -1,4 +1,15 @@
 <main class="room-page">
+	<aside class="room-page__participants shadow-sm">
+		<cm-user-video-thumbnail
+			class="room-page__stream-thumbnail room-page__user-stream shadow-lg"
+		>
+		</cm-user-video-thumbnail>
+		<cm-room-participant
+			*ngFor="let connection of connections | async"
+			[connection]="connection"
+		></cm-room-participant>
+	</aside>
+
 	<video
 		autoplay
 		[srcObject]="(getMainVideoStream() | async)?.track"
@@ -6,17 +17,4 @@
 	>
 		<div class="room-page__video-fallback"></div>
 	</video>
-
-	<cm-user-video-thumbnail class="room-page__stream-thumbnail room-page__user-stream shadow-lg">
-	</cm-user-video-thumbnail>
-
-	<aside class="room-page__participants shadow-lg">
-		<h5 class="w-100">Participants:</h5>
-
-		<cm-video-thumbnail
-			*ngFor="let connection of connections | async"
-			[stream]="connection.track"
-			class="room-page__participant-stream"
-		></cm-video-thumbnail>
-	</aside>
 </main>

@@ -23,7 +23,8 @@ export class UnauthorizedIntercetor implements HttpInterceptor {
 					this.store.dispatch(new LogoutAction());
 					this.router.navigateByUrl('/auth/login');
 				}
-				return of(error);
+
+				throw error;
 			})
 		);
 	}

@@ -13,11 +13,11 @@ namespace Communicator.Validation
         {
             RuleFor(x => x.Name)
                 .NotEmpty()
-                .WithMessage("Name is required.");
+                .WithMessage("You must provide a name.");
 
             RuleFor(x => x.Name)
                 .MustAsync(async (name, cancel) => await _userService.GetByName(name) == null)
-                .WithMessage("User name must be unique");
+                .WithMessage("Username is taken.");
 
             RuleFor(x => x.Password)
                 .MinimumLength(8)

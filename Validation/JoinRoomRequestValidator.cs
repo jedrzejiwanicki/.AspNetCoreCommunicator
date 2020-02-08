@@ -14,7 +14,7 @@ namespace Communicator.Validation
         {
             RuleFor(x => x.RoomName)
                 .NotEmpty()
-                .WithMessage("Room name is required!")
+                .WithMessage("Room name is required.")
                 .MustAsync(async (name, cancel) => await _roomService.ExistsByName(name))
                 .WithMessage("Room does not exist");
             

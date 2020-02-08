@@ -1,4 +1,4 @@
-@import "src/assets/styles/colors";
+@import 'src/assets/styles/colors';
 
 .main-nav {
 	width: 100vw;
@@ -13,5 +13,17 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	&__header {
+		color: $primary;
+
+		display: flex;
+
+		h1 {
+			margin: 0 10px 0 10px;
+			font-weight: 700;
+			font-size: 22px;
+		}
 	}
 }

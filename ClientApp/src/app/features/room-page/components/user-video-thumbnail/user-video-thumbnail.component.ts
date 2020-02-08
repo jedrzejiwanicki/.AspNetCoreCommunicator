@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserStreamService } from '@services/user-stream.service';
 
 @Component({
@@ -8,20 +8,19 @@ import { UserStreamService } from '@services/user-stream.service';
 	encapsulation: ViewEncapsulation.None,
 })
 export class UserVideoThumbnailComponent implements OnInit {
-	@Output() muted: EventEmitter<void> = new EventEmitter<void>();
-
 	constructor(public userStreamService: UserStreamService) {}
 
 	ngOnInit() {}
 
-	disableAudioStream() {
-		this.userStreamService.disableAudioStream();
-		this.muted.emit()
+	toggleAudioStream() {
+		this.userStreamService.toggleAudioStream();
 	}
 
-	disableVideoStream() {
-		this.userStreamService.disableVideoStream();
-		this.muted.emit()
+	toggleVideoStream() {
+		this.userStreamService.toggleVideoStream();
+	}
 
+	toggleScreenSharing() {
+		this.userStreamService.toggleScreenSharing();
 	}
 }

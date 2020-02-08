@@ -18,6 +18,8 @@ import { MainNavModule } from '@shared/components';
 import { AppComponent } from './app.component';
 import { SIGNAL_R_MANAGER_PROVIDER } from './core/providers/signal-r-manager-provider';
 import { routes } from './app.routes';
+import { ToastsModule } from '@shared/components/toasts/toasts.module';
+import { ErrorHandlerInterceptor } from '@interceptors/error-handler.interceptor';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -37,12 +39,14 @@ import { routes } from './app.routes';
 		!environment.production ? StoreDevtoolsModule.instrument() : [],
 		EffectsModule.forRoot(effects),
 		MainNavModule,
+		ToastsModule,
 	],
 	providers: [
 		SIGNAL_R_MANAGER_PROVIDER,
 		PERSISTENT_AUTH_PROVIDER,
 		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 		{ provide: HTTP_INTERCEPTORS, useClass: UnauthorizedIntercetor, multi: true },
+		{ provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true },
 	],
 	bootstrap: [AppComponent],
 })

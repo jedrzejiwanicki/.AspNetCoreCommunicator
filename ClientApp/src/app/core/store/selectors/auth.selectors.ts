@@ -1,11 +1,14 @@
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { filter, first } from 'rxjs/operators';
+import { distinctUntilChanged, filter, first } from 'rxjs/operators';
 
 import { AppState } from '@store/reducers';
 
 export const selectAuthToken = (store: Store<AppState>): Observable<string> =>
 	store.select((state) => state.auth.token).pipe(filter((token) => !!token));
+
+export const selectAuthTokenDistinct = (store: Store<AppState>): Observable<string> =>
+	selectAuthToken(store).pipe(distinctUntilChanged((t1, t2) => t1 === t2));
 
 export const selectAuthUserLoggedIn = (store: Store<AppState>): Observable<boolean> =>
 	store.select((state) => state.auth.isUserLoggedIn);

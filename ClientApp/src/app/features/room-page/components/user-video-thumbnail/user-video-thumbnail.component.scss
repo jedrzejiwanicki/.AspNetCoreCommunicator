@@ -1,6 +1,6 @@
 .user-video-thumbnail {
 	width: 250px;
-	height: auto;
+	height: 140px;
 	position: relative;
 
 	&__controls {
@@ -9,6 +9,7 @@
 		bottom: 0;
 		left: 0;
 		display: flex;
-		justify-content: space-around;
+		justify-content: flex-end;
+		padding: 10px;
 	}
 }

@@ -1,13 +1,13 @@
-@import "src/styles";
+@import 'src/styles';
 .room-page {
 	width: 100vw;
 	height: calc(100vh - 60px);
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-color: #fefe;
 
 	&__user-stream {
-		position: absolute;
-		top: 25px;
-		left: 25px;
 		width: 250px;
 	}
 
@@ -16,34 +16,23 @@
 		object-fit: fill;
 	}
 
-	&__participant-stream {
-		width: 100%;
-		height: auto;
-		margin: 15px 0;
-		border-radius: 3px;
-	}
-
 	&__main-stream {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: calc(100vh - 60px);
+		width: 100%;
+		max-width: 1140px;
+		margin: 30px auto;
+		height: auto;
 		object-fit: cover;
 		max-height: calc(100vh - 120px);
+		position: relative;
+		z-index: 10;
 	}
 
 	&__participants {
 		background-color: $background;
-		padding: 20px;
-		position: absolute;
-		top: 60px;
-		right: 20px;
-		height: 80vh;
-		width: 20vh;
+		width: 100vw;
 		display: flex;
-		flex-direction: column;
 		z-index: 5;
 		align-items: center;
+		padding: 20px;
 	}
 }

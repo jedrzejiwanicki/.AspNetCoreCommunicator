@@ -1,0 +1,15 @@
+<div class="room-participant">
+	<cm-video-thumbnail
+		[stream]="connection.track"
+		class="room-participant__stream"
+	></cm-video-thumbnail>
+	<div class="room-participant__metadata">
+		<h6 class="room-participant__participant-name">{{ connection.getReceiver().userName }}</h6>
+		<i
+			class="room-participant__speech-indicator"
+			[ngClass]="{
+				'room-participant__speech-indicator--speaking': connection.isSpeaking | async
+			}"
+		></i>
+	</div>
+</div>

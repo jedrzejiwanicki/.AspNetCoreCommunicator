@@ -50,6 +50,9 @@ namespace Communicator.Services
 
         public async Task AddUserToRoom(User user, Room room)
         {
+            Console.WriteLine(user == null);
+            Console.WriteLine(room == null);
+            
             room.ConnectedUsers.Add(user);
 
             _context.Rooms.Update(room);
