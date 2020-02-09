@@ -3,14 +3,16 @@ using System;
 using Communicator.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Communicator.Migrations
 {
     [DbContext(typeof(CommunicatorContext))]
-    partial class CommunicatorContextModelSnapshot : ModelSnapshot
+    [Migration("20200209124521_CreateMessages")]
+    partial class CreateMessages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +49,7 @@ namespace Communicator.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Messages");
+                    b.ToTable("Message");
                 });
 
             modelBuilder.Entity("Communicator.Db.Entities.Room", b =>

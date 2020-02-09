@@ -11,4 +11,6 @@ export enum SignalingEvent {
 	GetConnectionId = 'GetConnectionId',
 	Candidate = 'Candidate',
 	CandidateProposed = 'Candidate.Proposed',
+	SendMessage = 'SendMessage',
+	MessageAdded = 'Message.Added',
 }

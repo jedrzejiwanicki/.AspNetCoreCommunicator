@@ -1,13 +1,15 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Communicator.Db.Entities;
+using Communicator.Db.Extensions;
+using Communicator.Dtos;
 using Communicator.Requests;
 using Communicator.Services;
 using MediatR;
 
 namespace Communicator.Handlers
 {
-    public class GetRoomDetailsRequestHandler: IRequestHandler<GetRoomDetailsRequest, Room>
+    public class GetRoomDetailsRequestHandler : IRequestHandler<GetRoomDetailsRequest, SimpleRoomResponse>
     {
         private readonly RoomService _roomService;
 
@@ -15,10 +17,10 @@ namespace Communicator.Handlers
         {
             this._roomService = _roomService;
         }
-        
-        public Task<Room> Handle(GetRoomDetailsRequest request, CancellationToken cancellationToken)
+
+        public async Task<SimpleRoomResponse> Handle(GetRoomDetailsRequest request, CancellationToken cancellationToken)
         {
-            return _roomService.GetByName(request.Name);
+            return (await _roomService.GetByName(request.Name)).MapTo().SimpleResponse();
         }
     }
 }

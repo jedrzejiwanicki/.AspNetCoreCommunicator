@@ -24,6 +24,10 @@
       <e p="ClientApp/node_modules/@angular-devkit/core" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/@angular-devkit/schematics" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/@aspnet/signalr" t="IncludeRecursive" />
+      <e p="ClientApp/node_modules/@fortawesome/angular-fontawesome" t="IncludeRecursive" />
+      <e p="ClientApp/node_modules/@fortawesome/fontawesome-common-types" t="IncludeRecursive" />
+      <e p="ClientApp/node_modules/@fortawesome/fontawesome-svg-core" t="IncludeRecursive" />
+      <e p="ClientApp/node_modules/@fortawesome/free-solid-svg-icons" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/@ng-bootstrap/ng-bootstrap" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/@ngrx/effects" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/@ngrx/router-store" t="IncludeRecursive" />
@@ -113,11 +117,14 @@
         <e p="CommunicatorContext.cs" t="Include" />
         <e p="Entities" t="Include">
           <e p="CreatedModifiedAt.cs" t="Include" />
+          <e p="Message.cs" t="Include" />
           <e p="Room.cs" t="Include" />
           <e p="User.cs" t="Include" />
           <e p="UserConnection.cs" t="Include" />
         </e>
         <e p="Extensions" t="Include">
+          <e p="Message.cs" t="Include" />
+          <e p="Room.cs" t="Include" />
           <e p="User.cs" t="Include" />
         </e>
       </e>
@@ -128,11 +135,14 @@
         <e p="ISignalingCandidatePayload.cs" t="Include" />
         <e p="ISignalingLoginPayload.cs" t="Include" />
         <e p="ISignalingOfferPayload.cs" t="Include" />
+        <e p="ISignalingSendMessagePayload.cs" t="Include" />
         <e p="IUserRegistrationRequestPayload.cs" t="Include" />
         <e p="JoinRoomRequest.cs" t="Include" />
         <e p="LoginRequestPayload.cs" t="Include" />
         <e p="LoginRequestResponse.cs" t="Include" />
         <e p="RoomBase.cs" t="Include" />
+        <e p="SimpleMessageResponse.cs" t="Include" />
+        <e p="SimpleRoomResponse.cs" t="Include" />
         <e p="SimpleUserResponse.cs" t="Include" />
         <e p="UserRegistration.cs" t="Include" />
       </e>
@@ -147,12 +157,15 @@
         <e p="SignalingOfferNotificationHandler.cs" t="Include" />
         <e p="SignalingOnConnectedNotificationHandler.cs" t="Include" />
         <e p="SignalingOnDisconnectedNotificationHandler.cs" t="Include" />
+        <e p="SignalingSendMessageNotificationHandler.cs" t="Include" />
         <e p="UserRegistrationHandler.cs" t="Include" />
       </e>
       <e p="Helpers" t="Include">
         <e p="JwtBuilder.cs" t="Include" />
         <e p="JwtDecoder.cs" t="Include" />
         <e p="Mappers" t="Include">
+          <e p="MessageMappingFactory.cs" t="Include" />
+          <e p="RoomMappingFactory.cs" t="Include" />
           <e p="UserMappingFactory.cs" t="Include" />
         </e>
       </e>
@@ -185,6 +198,10 @@
         <e p="20200130130123_RemoveToken.cs" t="Include" />
         <e p="20200202150204_CascadeRemovalOfUserConnection.Designer.cs" t="Include" />
         <e p="20200202150204_CascadeRemovalOfUserConnection.cs" t="Include" />
+        <e p="20200209124521_CreateMessages.Designer.cs" t="Include" />
+        <e p="20200209124521_CreateMessages.cs" t="Include" />
+        <e p="20200209132838_TypeMessages.Designer.cs" t="Include" />
+        <e p="20200209132838_TypeMessages.cs" t="Include" />
         <e p="CommunicatorContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include" />
@@ -195,6 +212,7 @@
         <e p="SignalingOfferNotification.cs" t="Include" />
         <e p="SignalingOnConnectedNotification.cs" t="Include" />
         <e p="SignalingOnDisconnectedNotification.cs" t="Include" />
+        <e p="SignalingSendMessageNotification.cs" t="Include" />
       </e>
       <e p="Pages" t="Include">
         <e p="Error.cshtml" t="Include" />

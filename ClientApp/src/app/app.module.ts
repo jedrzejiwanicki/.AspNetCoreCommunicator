@@ -8,7 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './core/store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-
 import { effects } from './core/store/effects';
 import { environment } from '../environments/environment';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
@@ -20,6 +19,7 @@ import { SIGNAL_R_MANAGER_PROVIDER } from './core/providers/signal-r-manager-pro
 import { routes } from './app.routes';
 import { ToastsModule } from '@shared/components/toasts/toasts.module';
 import { ErrorHandlerInterceptor } from '@interceptors/error-handler.interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -28,6 +28,7 @@ import { ErrorHandlerInterceptor } from '@interceptors/error-handler.interceptor
 		BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
 		HttpClientModule,
 		FormsModule,
+		FontAwesomeModule,
 		RouterModule.forRoot(routes),
 		StoreModule.forRoot(reducers, {
 			metaReducers,

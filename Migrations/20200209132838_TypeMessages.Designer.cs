@@ -3,14 +3,16 @@ using System;
 using Communicator.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Communicator.Migrations
 {
     [DbContext(typeof(CommunicatorContext))]
-    partial class CommunicatorContextModelSnapshot : ModelSnapshot
+    [Migration("20200209132838_TypeMessages")]
+    partial class TypeMessages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

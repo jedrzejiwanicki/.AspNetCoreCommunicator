@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Communicator.Db.Entities;
+using Communicator.Db.Extensions;
 using Communicator.Dtos;
 using Communicator.Requests;
 using Communicator.Services;
@@ -30,14 +31,14 @@ namespace Communicator.Controllers
 
         [HttpGet]
         [Authorize]
-        public List<RoomBase> Get()
+        public List<SimpleRoomResponse> Get()
         {
-            return _roomService.GetAll();
+            return _roomService.GetAll().Select(r => r.MapTo().SimpleResponse()).ToList();
         }
 
         [HttpGet("details/{name}")]
         [Authorize]
-        public Task<Room> GetDetails(string name)
+        public Task<SimpleRoomResponse> GetDetails(string name)
         {
             return this._mediator.Send(new GetRoomDetailsRequest() {Name = name});
         }
@@ -48,7 +49,7 @@ namespace Communicator.Controllers
         public async Task<IActionResult> IsExisting(string name)
         {
             var exists = await _roomService.ExistsByName(name);
-            
+
             return Ok(exists);
         }
 

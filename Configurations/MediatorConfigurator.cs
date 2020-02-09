@@ -14,10 +14,10 @@ namespace Communicator.Configurations
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            services.AddTransient(typeof(IPipelineBehavior<JoinRoomRequest, Room>), typeof(ValidationPipelineBehavior<JoinRoomRequest, Room>));
+            services.AddTransient(typeof(IPipelineBehavior<JoinRoomRequest, SimpleRoomResponse>), typeof(ValidationPipelineBehavior<JoinRoomRequest, SimpleRoomResponse>));
             services.AddTransient(typeof(IPipelineBehavior<UserRegistrationRequest, User>), typeof(ValidationPipelineBehavior<UserRegistrationRequest, User>));
             services.AddTransient(typeof(IPipelineBehavior<LoginRequest, LoginRequestResponse>), typeof(ValidationPipelineBehavior<LoginRequest, LoginRequestResponse>));
-            services.AddTransient(typeof(IPipelineBehavior<GetRoomDetailsRequest, Room>), typeof(ValidationPipelineBehavior<GetRoomDetailsRequest, Room>));
+            services.AddTransient(typeof(IPipelineBehavior<GetRoomDetailsRequest, SimpleRoomResponse>), typeof(ValidationPipelineBehavior<GetRoomDetailsRequest, SimpleRoomResponse>));
         }
     }
 }

@@ -1,0 +1,22 @@
+<div class="room-participants-container">
+	<aside
+		class="room-participants-container__aside shadow-sm"
+		[ngClass]="{ 'room-participants-container__aside--shrink': isShrink }"
+	>
+		<cm-user-video-thumbnail class="shadow-lg"> </cm-user-video-thumbnail>
+		<cm-room-participant
+			*ngFor="let participant of participants"
+			[connection]="participant"
+		></cm-room-participant>
+	</aside>
+
+	<button
+		class="cm-button cm-button--icon cm-button--primary room-participants-container__shrink-button"
+		(click)="toggleShrink()"
+	>
+		<fa-icon *ngIf="!isShrink; else unshrink" [icon]="['fas', 'chevron-up']"></fa-icon>
+		<ng-template #unshrink>
+			<fa-icon [icon]="['fas', 'chevron-down']"></fa-icon>
+		</ng-template>
+	</button>
+</div>

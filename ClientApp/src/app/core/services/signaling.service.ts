@@ -6,6 +6,8 @@ import { SignalingLoginPayload, SignalingOfferPayload, User } from '../../models
 import { Observable } from 'rxjs';
 import { SignalingEvent } from '../../enums/signaling-event';
 import { SignalingCandidatePayload } from '../../models/signaling-candidate-payload';
+import { SignalingSendMessagePayload } from '@dtos/SignalingSendMessagePayload';
+import { Message } from '@models/message';
 
 @Injectable({
 	providedIn: 'root',
@@ -22,6 +24,10 @@ export class SignalingService {
 
 	leave(): void {
 		this.invoke<void>(SignalingEvent.LeaveRoom);
+	}
+
+	message(payload: SignalingSendMessagePayload): void {
+		this.invoke<SignalingSendMessagePayload>(SignalingEvent.SendMessage, payload);
 	}
 
 	offer(offer: RTCSessionDescriptionInit, receiver: User, sender: User): void {
@@ -43,6 +49,10 @@ export class SignalingService {
 			SignalingEvent.Candidate,
 			new SignalingCandidatePayload(candidate, receiver, sender)
 		);
+	}
+
+	onMessageAdded(): Observable<Message> {
+		return this.on<Message>(SignalingEvent.MessageAdded);
 	}
 
 	onCandidateReceived(): Observable<SignalingCandidatePayload> {

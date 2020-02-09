@@ -1,0 +1,29 @@
+<div class="row mt-1">
+	<aside class="room-messages col-sm-12 shadow-sm">
+		<div class="room-messages__container" #scrollElement>
+			<div class="room-messages__message" *ngFor="let message of messages">
+				<span class="room-messages__message__metadata"
+					><b>{{ message.author.userName }}</b
+					>{{ message.createdAt | date }}</span
+				>
+				<span class="room-messages__message__text"> {{ message.message }}</span>
+			</div>
+		</div>
+
+		<div class="room-messages__input">
+			<input
+				type="text"
+				class="room-messages__input__input"
+				name="message"
+				[(ngModel)]="message"
+			/>
+			<button
+				class="cm-button cm-button--icon cm-button--primary"
+				(click)="sendMessage()"
+				[disabled]="!message"
+			>
+				<fa-icon [icon]="['fas', 'share']"></fa-icon>
+			</button>
+		</div>
+	</aside>
+</div>

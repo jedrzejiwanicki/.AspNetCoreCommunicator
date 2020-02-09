@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Communicator.Dtos;
 using Communicator.Notifications;
+using Communicator.Requests;
 using Communicator.Services;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -32,12 +33,12 @@ namespace Communicator.Hubs
 
         public async Task LeaveRoom()
         {
-            
             await _mediator.Publish(new SignalingOnDisconnectedNotification()
             {
                 Token = Context.GetHttpContext().Request.Query["access_token"], ConnectionId = Context.ConnectionId
             });
         }
+
         public async Task Offer(ISignalingOfferPayload payload)
         {
             await _mediator.Publish(new SignalingOfferNotification(payload));
@@ -53,6 +54,15 @@ namespace Communicator.Hubs
             await _mediator.Publish(new SignalingCandidateNotification(payload));
         }
 
+        public async Task SendMessage(ISignalingSendMessagePayload payload)
+        {
+            await _mediator.Publish(new SignalingSendMessageNotification()
+            {
+                Token = Context.GetHttpContext().Request.Query["access_token"],
+                RoomId = payload.RoomId,
+                Message = payload.Message
+            });
+        }
 
         public async override Task OnConnectedAsync()
         {

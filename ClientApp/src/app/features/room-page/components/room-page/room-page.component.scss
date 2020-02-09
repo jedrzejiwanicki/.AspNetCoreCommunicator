@@ -7,10 +7,6 @@
 	flex-direction: column;
 	background-color: #fefe;
 
-	&__user-stream {
-		width: 250px;
-	}
-
 	&__stream-thumbnail {
 		border-radius: 3px;
 		object-fit: fill;
@@ -18,21 +14,10 @@
 
 	&__main-stream {
 		width: 100%;
-		max-width: 1140px;
-		margin: 30px auto;
 		height: auto;
 		object-fit: cover;
-		max-height: calc(100vh - 120px);
+		max-height: calc(100vh - 20rem);
 		position: relative;
 		z-index: 10;
-	}
-
-	&__participants {
-		background-color: $background;
-		width: 100vw;
-		display: flex;
-		z-index: 5;
-		align-items: center;
-		padding: 20px;
 	}
 }

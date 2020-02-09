@@ -8,5 +8,6 @@ namespace Communicator.Constants
         public static readonly string UserLoggedIn = "User.Logged.In";
         public static readonly string CandidateProposed = "Candidate.Proposed";
         public static readonly string UserRemoved = "User.Removed";
+        public static readonly string MessageAdded = "Message.Added";
     }
 }

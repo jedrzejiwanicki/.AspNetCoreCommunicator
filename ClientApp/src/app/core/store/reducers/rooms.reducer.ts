@@ -52,6 +52,15 @@ export function roomsReducer(state = initialState, action: RoomAction) {
 				...state,
 				isLoadingDetails: false,
 			};
+
+		case RoomActionType.AddMessage:
+			return {
+				...state,
+				roomDetails: {
+					...state.roomDetails,
+					messages: [...state.roomDetails.messages, action.payload],
+				},
+			};
 		default:
 			return {
 				...state,

@@ -19,6 +19,8 @@ namespace Communicator.Db
         public override DbSet<User> Users { get; set; }
         public DbSet<Room> Rooms { get; set; }
 
+        public DbSet<Message> Messages { get; set; }
+        
         public DbSet<UserConnection> UserConnections { get; set; }
 
         public CommunicatorContext(AppConfigurations appConfigurations)

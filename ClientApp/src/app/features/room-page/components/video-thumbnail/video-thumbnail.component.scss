@@ -1,7 +1,16 @@
 .video-thumbnail {
-	width: 100%;
+	width: auto;
+	height: 10vh;
 	position: relative;
-	height: 140px;
+	transition: all 0.3s ease;
+
+	&--loading {
+		width: 200px;
+
+		.video-thumbnail__video {
+			height: 0;
+		}
+	}
 
 	&__fallback {
 		width: 100%;
@@ -15,14 +24,14 @@
 
 	&__video {
 		cursor: pointer;
-		height: 140px;
 		object-fit: cover;
+		width: inherit;
+		height: inherit;
 	}
 
 	&__loader {
 		position: absolute;
-		top: 40%;
-		left: 50%;
-		transform: translate(-50%,-50%);
+		top: 10px;
+		left: 10px;
 	}
 }

@@ -1,8 +1,11 @@
 import { Room } from './room';
 import { User } from './user';
+import { Message } from '@models/message';
 
 export class RoomDetails extends Room {
-	id: string;
-	name: string;
-	connectedUsers: User[];
+	public id: string;
+	public name: string;
+	public connectedUsers: User[];
+	public messages: Message[];
+
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Communicator.Db;
 using Communicator.Db.Entities;
+using Communicator.Db.Extensions;
 using Communicator.Dtos;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,11 +19,9 @@ namespace Communicator.Services
             this._context = _context;
         }
 
-        public List<RoomBase> GetAll()
+        public List<Room> GetAll()
         {
-            return _context.Rooms
-                .Select(x => new RoomBase {Id = x.Id, Name = x.Name})
-                .ToList();
+            return _context.Rooms.ToList();
         }
 
         public async Task<Room> GetById(string roomId)
@@ -34,6 +33,7 @@ namespace Communicator.Services
         {
             return await _context.Rooms
                 .Include(r => r.ConnectedUsers)
+                .Include(r => r.Messages)
                 .FirstOrDefaultAsync(room => room.Name == name);
         }
 
@@ -50,9 +50,6 @@ namespace Communicator.Services
 
         public async Task AddUserToRoom(User user, Room room)
         {
-            Console.WriteLine(user == null);
-            Console.WriteLine(room == null);
-            
             room.ConnectedUsers.Add(user);
 
             _context.Rooms.Update(room);
@@ -61,14 +58,22 @@ namespace Communicator.Services
 
         public async Task RemoveUserFromRoom(User user, Room room)
         {
-            
-            
-            
             room.ConnectedUsers.Remove(user);
 
             _context.Rooms.Update(room);
 
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Message> AddMessageToRoom(Room room, User author, string message)
+        {
+            var entity = new Message() {Author = author, Room = room, Text = message};
+
+            room.Messages.Add(entity);
+
+            await _context.SaveChangesAsync();
+
+            return await _context.Messages.FirstOrDefaultAsync(m => m.Id == entity.Id);
         }
     }
 }

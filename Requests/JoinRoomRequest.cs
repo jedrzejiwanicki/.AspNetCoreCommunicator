@@ -4,7 +4,7 @@ using Communicator.Dtos;
 
 namespace Communicator.Requests
 {
-    public class JoinRoomRequest : ValidatedRequest<Room>
+    public class JoinRoomRequest : ValidatedRequest<SimpleRoomResponse>
     {
         public string UserId { get; set; }
         public string RoomName { get; set; }

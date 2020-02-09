@@ -34,14 +34,17 @@ export class PeerConnectionStorageService {
 	remove(userId: string) {
 		const connection = this.connections.value.find((con) => con.getReceiver().id === userId);
 
-		console.log(connection);
 		if (connection) {
 			connection.utilize();
 		}
 
+		console.log('Connection to be removed: ' + connection);
+
 		this.connections.next(
 			this.connections.value.filter((con) => con.getReceiver().id !== userId)
 		);
+
+		console.log(this.connections.value);
 	}
 
 	utilize() {
@@ -53,7 +56,7 @@ export class PeerConnectionStorageService {
 	}
 
 	getAll(): Observable<PeerConnection[]> {
-		return this.connections.pipe(filter((connection) => !!connection.length));
+		return this.connections;
 	}
 
 	getSync(userId): PeerConnection {
@@ -84,6 +87,9 @@ export class PeerConnectionStorageService {
 	}
 
 	private handleOnDisconnected(pc: PeerConnection) {
+		console.log('Disconnected: ' + pc.getReceiver().userName);
+		pc.createOffer();
+
 		this.remove(pc.getReceiver().id);
 	}
 

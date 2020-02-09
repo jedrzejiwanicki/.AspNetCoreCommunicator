@@ -1,0 +1,28 @@
+@import 'src/styles';
+
+.room-participants-container {
+	position: relative;
+
+	&__aside {
+		background-color: $background;
+		transition: 0.3s all ease;
+		width: 100vw;
+		overflow: auto;
+		height: 10rem;
+		display: flex;
+		z-index: 5;
+		align-items: center;
+		padding: 0 10px;
+
+		&--shrink {
+			height: 0;
+		}
+	}
+
+	&__shrink-button {
+		position: absolute;
+		bottom: -15px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
