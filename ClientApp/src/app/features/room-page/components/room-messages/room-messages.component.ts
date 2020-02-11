@@ -21,7 +21,7 @@ export class RoomMessagesComponent implements OnInit {
 	public message: string;
 	public messages: Message[];
 
-	@ViewChild('scrollElement', { static: false }) scrollElement: ElementRef;
+	@ViewChild('scrollElement') scrollElement: ElementRef;
 	constructor(
 		private store: Store<AppState>,
 		private signalingService: SignalingService,
