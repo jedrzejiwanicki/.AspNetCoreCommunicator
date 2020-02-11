@@ -61,6 +61,7 @@
       <e p="ClientApp/node_modules/es6-promise" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/fast-deep-equal" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/hark" t="IncludeRecursive" />
+      <e p="ClientApp/node_modules/hash.js" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/jasmine-core" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/jasmine-spec-reporter" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/jest-worker" t="IncludeRecursive" />
@@ -80,6 +81,7 @@
       <e p="ClientApp/node_modules/postcss" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/protractor" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/reflect-metadata" t="IncludeRecursive" />
+      <e p="ClientApp/node_modules/rollup" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/rxjs" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/source-map" t="IncludeRecursive" />
       <e p="ClientApp/node_modules/sourcemap-codec" t="IncludeRecursive" />
